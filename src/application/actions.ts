@@ -18,6 +18,7 @@ export type Action =
     | ReturnType<typeof actionNext> 
     | ReturnType<typeof actionPrev> 
     | ReturnType<typeof actionRestart> 
+    | ReturnType<typeof actionUpdate> 
     | ReturnType<typeof actionMessage> 
     | ReturnType<typeof actionSetTheme> 
     | ReturnType<typeof actionTimer>;
