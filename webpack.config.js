@@ -9,6 +9,7 @@ module.exports = {
         index: './src/index.ts',
         frame: './src/frame.ts',
     },
+    mode: 'development',
     devtool: 'inline-source-map',
     devServer: { contentBase: './dist' },
     plugins: [
