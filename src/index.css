@@ -87,10 +87,6 @@ body {
     background: #bfbfbf88;
 }
 
-.theme_light .set-light {
-    display: none;
-}
-
 .theme_dark .button {
     color: #918F8A;
 }
@@ -101,8 +97,4 @@ body {
 
 .theme_dark .slide-progress {
     background: #918F8A;
-}
-
-.theme_dark .set-dark {
-    display: none;
 }
