@@ -3,7 +3,7 @@ import { filter, mapTo, mergeMap, take, withLatestFrom } from 'rxjs/operators';
 import { Action, actionMessage, actionNext, actionPrev, actionRestart, actionTimer, actionUpdate } from './actions';
 import { DELAY, INTERVAL, Slide, State } from './types';
 
-export function ofType<T extends Action>(type: Action['type']): MonoTypeOperatorFunction<T> {
+function ofType<T extends Action>(type: Action['type']): MonoTypeOperatorFunction<T> {
     return filter(a => type === a.type);
 }
 
