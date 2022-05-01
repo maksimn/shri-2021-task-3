@@ -23,7 +23,10 @@ export function createState(stories: Slide[]): [(a: Action) => void, Observable<
 
     actions$.pipe(
         withLatestFrom(state$), 
-        map(([a, s]) => reducer(s, a)),
+        map(([a, s]) => { 
+            console.log(a, s)
+            return reducer(s, a) 
+        })
     ).subscribe(state$);
 
     const dispatch = (action: Action) => actions$.next(action);
