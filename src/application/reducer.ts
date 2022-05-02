@@ -3,7 +3,7 @@ import produce, { Draft } from 'immer';
 import { Action } from './actions';
 import { INTERVAL, State } from './types';
 
-export const data = produce((draft: Draft<State>, action: Action) => {
+export const reducer = produce((draft: Draft<State>, action: Action) => {
     switch (action.type) {
         case 'timer':
             if (!draft.pause) {
