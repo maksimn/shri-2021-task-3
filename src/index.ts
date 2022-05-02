@@ -6,6 +6,7 @@ import {
     actionNext,
     actionRestart,
     actionSetTheme,
+    actionUpdate,
 } from './application/actions';
 import { createState } from './application/state';
 import { createCurrentDataSelector, createCurrentIndexSelector, createProgressSelector, createThemeSelector } from './application/selectors';
@@ -18,17 +19,23 @@ import { stories } from './data';
 const [dispatch, state$] = createState(stories);
 
 function onMessage({ data }: MessageEvent<XMessage>) {
-    // Возможная ошибка: почему не рассмотрены условия для разных значений data.type?
-    if (data.type === 'message@ACTION') {
-        dispatch(actionMessage(data.action, data.params));
+    switch (data.type) {
+        case 'message@ACTION':
+            dispatch(actionMessage(data.action, data.params));
+            break;
+        case 'message@SET_THEME':
+            dispatch(actionSetTheme(data.theme));
+            break;
+        case 'message@UPDATE':
+            dispatch(actionUpdate(data.data));
+            break;
     }
 }
 
 const player = document.querySelector<HTMLDivElement>('.player');
 const frames = stories.map(({ alias, data }) => initIframe(player, iframe => {
-    // Возможная ошибка: правилен эти порядок этих двух строк?
-    sendMessage(iframe, messageUpdate(alias, data));
     iframe.contentWindow.addEventListener('message', onMessage);
+    sendMessage(iframe, messageUpdate(alias, data));
 }));
 
 const progress = document.querySelector<HTMLDivElement>('.progress-container');
