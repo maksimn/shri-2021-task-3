@@ -38,7 +38,7 @@ body {
 }
 
 .slide-progress-value {
-    height: 18px;
+    height: 6px;
     background-color: #F4B000;
     transition: transform 0.1s linear;
     transform-origin: left top;
